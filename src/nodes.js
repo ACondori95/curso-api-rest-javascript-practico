@@ -1,4 +1,4 @@
-// Section
+// Sections
 const headerSection = document.querySelector("#header");
 const trendingPreviewSection = document.querySelector("#trendingPreview");
 const categoriesPreviewSection = document.querySelector("#categoriesPreview");
@@ -10,7 +10,7 @@ const searchForm = document.querySelector("#searchForm");
 const trendingMoviesPreviewList = document.querySelector(
   ".trendingPreview-movieList"
 );
-const categoryPreviewList = document.querySelector(".categoriesPreview-list");
+const categoriesPreviewList = document.querySelector(".categoriesPreview-list");
 const movieDetailCategoriesList = document.querySelector(
   "#movieDetail .categories-list"
 );

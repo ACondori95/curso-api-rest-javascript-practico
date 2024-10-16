@@ -38,7 +38,7 @@ function createCategories(categories, container) {
 
     const categoryTitle = document.createElement("h3");
     categoryTitle.classList.add("category-title");
-    categoryTitle.setAttribute("id", "id" + category.id);
+    categoryTitle.setAttribute("id", `id${category.id}`);
     categoryTitle.addEventListener("click", () => {
       location.hash = `#category=${category.id}-${category.name}`;
     });
@@ -62,13 +62,24 @@ async function getCategoriesPreview() {
   const {data} = await api("genre/movie/list");
   const categories = data.genres;
 
-  createCategories(categories, categoryPreviewList);
+  createCategories(categories, categoriesPreviewList);
 }
 
 async function getMoviesByCategory(id) {
   const {data} = await api("discover/movie", {
     params: {
       with_genres: id,
+    },
+  });
+  const movies = data.results;
+
+  createMovies(movies, genericSection);
+}
+
+async function getMoviesBySearch(query) {
+  const {data} = await api("search/movie", {
+    params: {
+      query,
     },
   });
   const movies = data.results;
