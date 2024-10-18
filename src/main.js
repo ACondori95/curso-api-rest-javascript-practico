@@ -101,11 +101,21 @@ async function getMovieById(id) {
       rgba(0, 0, 0, 0.35) 19.27%,
       rgba(0, 0, 0, 0) 29.17%
     ),
-    url(${movieImgUrl})`;
+    url(${movieImgUrl})
+  `;
 
   movieDetailTitle.textContent = movie.title;
   movieDetailDescription.textContent = movie.overview;
   movieDetailScore.textContent = movie.vote_average;
 
   createCategories(movie.genres, movieDetailCategoriesList);
+
+  getRelatedMovies(id);
+}
+
+async function getRelatedMovies(id) {
+  const {data} = await api(`movie/${id}/recommendations`);
+  const relatedMovies = data.results;
+
+  createMovies(relatedMovies, relatedMoviesContainer);
 }
